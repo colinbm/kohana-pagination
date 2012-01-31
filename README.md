@@ -11,10 +11,17 @@ Usage
 ### Controller
 ```php
 <?php
-$users = ORM::factory('users');
-# Add where clause, etc, here if filtering
-$pagination = new Pagination($users, $this->request->param('page'), 'admin_user');
-$this->template->content->pagination = $pagination;
+
+# Make sure you have <page> defined in your route (or a different parameter - see Pagination::$route_page_param
+
+...
+
+public function action_user() {
+	$users = ORM::factory('users');
+	# Add where clause, etc, here if filtering
+	$pagination = new Pagination($users, $this->request->param('page'), 'admin_user');
+	$this->template->content->pagination = $pagination;
+}
 ```
 
 ### View
