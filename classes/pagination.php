@@ -28,7 +28,8 @@ class Pagination {
 	}
 
 	protected function get_result_set() {
-		return $this->result->offset($this->start)->limit($this->per_page);
+		$result = clone($this->result);
+		return $result->offset($this->start)->limit($this->per_page);
 	}
 
 	public function render() {
