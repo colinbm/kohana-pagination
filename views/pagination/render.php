@@ -7,7 +7,7 @@
 			<li class="prev"><a href="<?php echo URL::site(Route::get($route)->uri(array_merge($route_params, array($route_page_param => $page-1)))); ?>">&larr; Previous</a></li>
 		<?php endif; ?>
 		
-		<?php if ($pages == 1): ?>
+		<?php if ($pages <= 1): ?>
 			<li class="disabled"><a>1</a></li>
 		<?php else: ?>
 			<li <?php if ($page == 1): ?>class="active"<?php endif; ?>><a href="<?php echo URL::site(Route::get($route)->uri(array_merge($route_params, array($route_page_param => 1)))); ?>">1</a></li>
@@ -33,7 +33,7 @@
 
 		<?php endif; ?>
 
-		<?php if ($page == $pages): ?>
+		<?php if ($page == $pages || $pages == 0): ?>
 			<li class="next disabled"><a>Next &rarr;</a></li>
 		<?php else: ?>
 			<li class="next"><a href="<?php echo URL::site(Route::get($route)->uri(array_merge($route_params, array($route_page_param => $page+1)))); ?>">Next &rarr;</a></li>
